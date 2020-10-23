@@ -1,2 +1,2 @@
 # MolEvol
-Biology for LOOSERS. Enjoy! 
+Biology. Enjoy! 
