@@ -1,2 +1,1 @@
-# MolEvol
-Biology. Enjoy! 
+Useful commands
