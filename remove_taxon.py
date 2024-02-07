@@ -1,5 +1,5 @@
 from Bio import SeqIO
-
+import sys, argparse, os
 
 def main():
     parser = argparse.ArgumentParser(description='remove sequence from MSA fasta')
@@ -8,16 +8,11 @@ def main():
   
     
     args = parser.parse_args()
-    
-    print("Reading input")
-    test_data = np.load(args.TEST)
+    sequences = SeqIO.parse(args.FASTA, 'fasta')
+    filtered = [seq for seq in sequences if args.TAXON not in seq.id]
 
-
-sequences = SeqIO.parse(args.FASTA, 'fasta')
-filtered = [seq for seq in sequences if args.TAXON not in seq.id]
-
-with open(args.FASTA, 'wt') as output:
-    SeqIO.write(filtered, output, 'fasta')
-
+    with open(args.FASTA, 'wt') as output:
+        SeqIO.write(filtered, output, 'fasta')
+    print(f"\nRemoved {args.TAXON} from {args.FASTA}")
 if __name__ == "__main__":
     main()
